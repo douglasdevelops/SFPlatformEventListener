@@ -23,7 +23,7 @@ This repository contains a C# application that uses CometD to connect to Salesfo
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/yourusername/cometd-salesforce-client.git
+    git clone https://github.com/douglasdevelops/cometd-salesforce-client.git
     cd cometd-salesforce-client
     ```
 
