@@ -399,6 +399,3 @@ FodyWeavers.xsd
 
 # Ignore app.config file
 app.config
-
-# Alternatively, ignore all .config files
-*.config
