@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -51,6 +52,8 @@ namespace SFPlatformEventListener
         /// <param name="message">The message received from the platform event.</param>
         public PlatformEventReceivedEventArgs(string message)
         {
+            var jsonObject = JsonConvert.DeserializeObject(message);
+            string prettyJson = JsonConvert.SerializeObject(jsonObject, Formatting.Indented);
             Message = message;
         }
     }

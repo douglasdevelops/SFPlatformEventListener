@@ -149,26 +149,53 @@ internal class Program
 
             clientBayeux.AddExtension(new OAuthExtension(accessToken));
 
-            clientBayeux.Handshake();
-            if (clientBayeux.WaitFor(10000, new List<BayeuxClient.State> { BayeuxClient.State.CONNECTED }) == BayeuxClient.State.CONNECTED)
+            var cts = new CancellationTokenSource();
+            
+            Console.CancelKeyPress += (sender, e) =>
             {
-                var clientChannel = clientBayeux.GetChannel(channel);
+                e.Cancel = true;
+                cts.Cancel();
+            };
 
-                var listner = new MessageListener();
-
-                clientChannel.Subscribe(listner);
-
-                listner.PlatformEventReceived += Listner_PlatformEventReceived; ;
-
-                while (true)
+            try
+            {
+                clientBayeux.Handshake();
+                if (clientBayeux.WaitFor(10000, new List<BayeuxClient.State> { BayeuxClient.State.CONNECTED }) == BayeuxClient.State.CONNECTED)
                 {
-                    await Task.Delay(1000);
+                    var clientChannel = clientBayeux.GetChannel(channel);
+                    var listener = new MessageListener();
+                    clientChannel.Subscribe(listener);
+                    listener.PlatformEventReceived += Listener_PlatformEventReceived;
+
+                    Console.WriteLine("Connected to CometD server. Listening for events...");
+                    while (!cts.Token.IsCancellationRequested)
+                    {
+                        try
+                        {
+                            await Task.Delay(1000, cts.Token);
+                        }
+                        catch (TaskCanceledException ex)
+                        {                            
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Failed to connect to CometD server.");
                 }
             }
-            else
+            finally
             {
-                Console.WriteLine("Failed to connect to CometD server.");
-            }
+                Console.WriteLine("Disconnecting...");
+                clientBayeux.Disconnect();
+                clientBayeux.WaitFor(5000, new List<BayeuxClient.State> { BayeuxClient.State.DISCONNECTED });
+                Console.WriteLine("Disconnected.");
+
+                // Log out from Salesforce
+                await LogoutFromSalesforce(accessToken);
+
+                Console.WriteLine("Disconnected and logged out.");
+            }            
         }
     }
 
@@ -177,8 +204,32 @@ internal class Program
     /// </summary>
     /// <param name="sender">The sender of the event.</param>
     /// <param name="e">The event arguments containing the message.</param>
-    private static void Listner_PlatformEventReceived(object? sender, PlatformEventReceivedEventArgs e)
+    private static void Listener_PlatformEventReceived(object? sender, PlatformEventReceivedEventArgs e)
     {
         Console.WriteLine(e.Message);
+    }
+
+    public static async Task LogoutFromSalesforce(string accessToken)
+    {
+        string revokeUrl = "https://test.salesforce.com/services/oauth2/revoke";
+
+        using (var client = new HttpClient())
+        {
+            var requestContent = new FormUrlEncodedContent(new[]
+            {
+            new KeyValuePair<string, string>("token", accessToken)
+        });
+
+            HttpResponseMessage response = await client.PostAsync(revokeUrl, requestContent);
+
+            if (response.IsSuccessStatusCode)
+            {
+                Console.WriteLine("Successfully logged out of Salesforce.");
+            }
+            else
+            {
+                Console.WriteLine($"Failed to log out. Status code: {response.StatusCode}");
+            }
+        }
     }
 }
