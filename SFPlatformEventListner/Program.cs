@@ -114,6 +114,7 @@ internal class Program
         string securityToken = ConfigurationManager.AppSettings["securityToken"];
         string channel = $"/event/{ConfigurationManager.AppSettings["channel"]}";
         string tokenUrl = ConfigurationManager.AppSettings["tokenUrl"];
+        string cometdVersion = ConfigurationManager.AppSettings["cometdVersion"];
 
         using (var client = new HttpClient())
         {
@@ -144,7 +145,7 @@ internal class Program
             nvc.Add("Authorization", "Bearer " + accessToken);
 
             var transport = new LongPollingTransport(transportOptions,nvc);
-            var clientBayeux = new BayeuxClient($"{instanceUrl}/cometd/50.0", transport);
+            var clientBayeux = new BayeuxClient($"{instanceUrl}/cometd/{cometdVersion}", transport);
 
             clientBayeux.AddExtension(new OAuthExtension(accessToken));
 
