@@ -58,7 +58,7 @@
 
     function copyToClipboard(text) {
         navigator.clipboard.writeText(text).then(function() {
-            alert('Message copied to clipboard');
+            console.log('Copied Text...')
         }, function(err) {
             console.error('Could not copy text: ', err);
         });
