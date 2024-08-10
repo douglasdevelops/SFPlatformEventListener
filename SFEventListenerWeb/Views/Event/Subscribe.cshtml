@@ -1,5 +1,5 @@
 ﻿@model List<string>
-<h2>Subscribe to Events</h2>
+<h2>Select Platform Events</h2>
 
 @if (ViewBag.Message != null)
 {
@@ -9,8 +9,8 @@
 }
 
 <form method="post" action="@Url.Action("Submit", "Event")">
-    <div class="container mt-4">
-        <h2>Select Platform Events</h2>
+    
+        
         <div class="form-group">
             <label for="platformEvents">Platform Events:</label>
             <select id="platformEvents" name="selectedEvents" class="form-control" multiple>
@@ -50,4 +50,12 @@
             }
         });
     });
+
+     var selectElement = document.getElementById("platformEvents");
+
+    // Get the number of options in the select element
+    var numberOfOptions = selectElement.options.length;
+
+    // Set the size attribute to the number of options
+    selectElement.size = numberOfOptions;
 </script>

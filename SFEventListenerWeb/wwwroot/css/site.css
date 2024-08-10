@@ -1,38 +1,38 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+    font-family: "Salesforce Sans", Arial, sans-serif; /* Use Salesforce Sans for consistency with SLDS */
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+    html {
+        font-size: 16px;
+    }
 }
 
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
     text-align: center;
+    color: #080707; /* SLDS default text color */
 }
 
 .navbar {
-    background-color: #333;
+    background-color: #16325c; /* SLDS brand color */
     color: white;
     padding: 10px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
+    border-bottom: 1px solid #dddddd; /* Add a subtle border to match SLDS style */
 }
 
     .navbar .org-name {
         font-weight: bold;
+        font-size: 1.25em; /* Adjusted for better hierarchy */
     }
 
 .landing-page {
@@ -42,14 +42,17 @@ body {
     .landing-page h1 {
         font-size: 2.5em;
         margin-bottom: 20px;
+        font-weight: 300; /* Light font weight to mimic SLDS headers */
+        color: #16325c; /* Brand color */
     }
 
     .landing-page p {
         font-size: 1.2em;
-        color: #555;
+        color: #505050; /* Adjusted color for better readability */
         margin-bottom: 40px;
     }
 
+/* Buttons */
 .buttons {
     display: flex;
     justify-content: center;
@@ -59,183 +62,115 @@ body {
 .button {
     padding: 15px 30px;
     font-size: 1.1em;
-    background-color: #007bff;
+    background-color: #0070d2; /* SLDS brand button color */
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px; /* SLDS buttons have slightly rounded corners */
     text-decoration: none;
     transition: background-color 0.3s;
-}
-
-    .button:hover {
-        background-color: #0056b3;
-    }
-
-.navbar {
-    background-color: #333;
-    color: white;
-    padding: 10px 0;
-    display: flex;
-    justify-content: space-between;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow to add depth */
+    display: inline-flex;
     align-items: center;
-    padding: 10px 20px;
-}
-
-    .navbar .org-name {
-        font-weight: bold;
-    }
-
-.landing-page {
-    margin-top: 50px;
-}
-
-    .landing-page h1 {
-        font-size: 2.5em;
-        margin-bottom: 20px;
-    }
-
-    .landing-page p {
-        font-size: 1.2em;
-        color: #555;
-        margin-bottom: 40px;
-    }
-
-.buttons {
-    display: flex;
     justify-content: center;
-    gap: 20px;
-}
-
-.button {
-    padding: 15px 30px;
-    font-size: 1.1em;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s;
 }
 
     .button:hover {
-        background-color: #0056b3;
+        background-color: #005fb2; /* Darker shade for hover state */
     }
 
-.table-container {
-    width: 50%;
-    margin: 20px auto;
-    font-family: Arial, sans-serif;
+    .button:active {
+        background-color: #004491; /* Even darker shade for active state */
+    }
+
+/* Text Inputs */
+input[type="text"], input[type="email"], input[type="password"], textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 1px solid #d8dde6; /* SLDS input border color */
+    border-radius: 4px; /* Rounded corners for inputs */
+    font-size: 1em;
+    background-color: white;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); /* Subtle inner shadow */
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
+    input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, textarea:focus {
+        border-color: #0070d2; /* Highlight border on focus */
+        box-shadow: 0 0 5px rgba(0, 112, 210, 0.5); /* Outer glow effect */
+        outline: none;
+    }
+
+/* Table */
 .table-container {
     width: 50%;
     margin: 20px auto;
-    font-family: Arial, sans-serif;
+    font-family: "Salesforce Sans", Arial, sans-serif;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* SLDS-style subtle shadow */
 }
 
 th, td {
-    padding: 8px;
-    border: 1px solid #ddd;
+    padding: 12px; /* Increase padding for better readability */
+    border: 1px solid #d8dde6;
     text-align: left;
-    position: relative; /* Ensures the tooltip is positioned relative to the table cell */
+    position: relative;
+    font-size: 0.875em; /* Slightly smaller font size for table text */
+    color: #080707;
+}
+
+th {
+    background-color: #f4f6f9; /* Light background for table headers */
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #16325c; /* SLDS brand color for headers */
 }
 
 .tooltip-icon {
     cursor: pointer;
-    color: blue;
+    color: #0070d2; /* Match tooltip icon color with SLDS brand color */
     margin-left: 5px;
     position: relative;
 }
 
 .tooltip-text {
     visibility: hidden;
-    background-color: black;
+    background-color: #16325c; /* Use SLDS brand color for tooltips */
     color: #fff;
     text-align: left;
-    border-radius: 6px;
+    border-radius: 4px;
     padding: 10px;
     position: absolute;
     z-index: 1;
     opacity: 0;
     transition: opacity 0.3s;
-    white-space: normal; /* Allows text to wrap */
-    max-width: 300px; /* Limits the maximum width of the tooltip */
-    word-wrap: break-word; /* Breaks long words to fit within the max-width */
-    overflow-wrap: break-word; /* Ensures words break to fit within the container */
+    white-space: normal;
+    max-width: 300px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
     transform: translateX(-50%);
-    top: -9999px; /* Start off-screen to prevent flickering */
+    top: -9999px;
     left: 50%;
 }
 
-/* Show the tooltip */
 .tooltip-icon:hover .tooltip-text {
     visibility: visible;
     opacity: 1;
 }
 
-/* Optional: Add an arrow pointing down */
 .tooltip-text::after {
     content: "";
     position: absolute;
-    top: 100%; /* Position at the bottom of the tooltip */
+    top: 100%;
     left: 50%;
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: black transparent transparent transparent;
+    border-color: #16325c transparent transparent transparent;
 }
-
-.navbar {
-    background-color: #333;
-    color: white;
-    padding: 10px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-}
-
-    .navbar .org-name {
-        font-weight: bold;
-    }
-
-.landing-page {
-    margin-top: 50px;
-}
-
-    .landing-page h1 {
-        font-size: 2.5em;
-        margin-bottom: 20px;
-    }
-
-    .landing-page p {
-        font-size: 1.2em;
-        color: #555;
-        margin-bottom: 40px;
-    }
-
-.buttons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-.button {
-    padding: 15px 30px;
-    font-size: 1.1em;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s;
-}
-
-    .button:hover {
-        background-color: #0056b3;
-    }
