@@ -5,6 +5,10 @@ VisualStudioVersion = 17.4.33403.182
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFPlatformEventListener", "SFPlatformEventListner\SFPlatformEventListener.csproj", "{B74D8E5F-440C-41E6-8893-E94E257237CA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFEventListenerWeb", "SFEventListenerWeb\SFEventListenerWeb.csproj", "{74522494-A1FD-4211-B4E5-0436AC6CDEF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageListenerLib", "MessageListnerLib\MessageListenerLib.csproj", "{5FB2DC2A-C49D-46DD-8A97-A0C3DD0A9D0C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{B74D8E5F-440C-41E6-8893-E94E257237CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B74D8E5F-440C-41E6-8893-E94E257237CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B74D8E5F-440C-41E6-8893-E94E257237CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74522494-A1FD-4211-B4E5-0436AC6CDEF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74522494-A1FD-4211-B4E5-0436AC6CDEF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74522494-A1FD-4211-B4E5-0436AC6CDEF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74522494-A1FD-4211-B4E5-0436AC6CDEF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FB2DC2A-C49D-46DD-8A97-A0C3DD0A9D0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FB2DC2A-C49D-46DD-8A97-A0C3DD0A9D0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FB2DC2A-C49D-46DD-8A97-A0C3DD0A9D0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FB2DC2A-C49D-46DD-8A97-A0C3DD0A9D0C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

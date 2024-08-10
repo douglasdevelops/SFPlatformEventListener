@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SFEventListenerWeb</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/SFEventListenerWeb.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">Salesforce Event Monitor</div>
+            <div class="org-name">Connected to: <span id="orgname"></span></div>
+            <div class="nav-links">
+                <a href="/" style="color: white; text-decoration: none; margin-right: 15px;">Home</a>
+                <a href="/subscribe" style="color: white; text-decoration: none; margin-right: 15px;">Subscribe</a>
+                <a href="/monitor" style="color: white; text-decoration: none;">Monitor</a>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - SFEventListenerWeb - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+
+<script>
+    function getCookie(name) {
+        let cookieArr = document.cookie.split(";");
+
+        for (let i = 0; i < cookieArr.length; i++) {
+            let cookiePair = cookieArr[i].split("=");
+
+            if (name == cookiePair[0].trim()) {
+                console.log('##cookie' + cookiePair[1]);
+                return decodeURIComponent(cookiePair[1]);
+            }
+        }
+
+        return null;
+    }
+
+    window.onload = function () {
+        const orgName = getCookie("OrgName");
+        if (orgName) {
+            document.getElementById("orgname").textContent = orgName;
+        } else {
+            document.getElementById("orgname").textContent = "Not Set";
+        }
+    };
+</script>

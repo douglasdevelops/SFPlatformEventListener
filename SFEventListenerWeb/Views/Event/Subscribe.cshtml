@@ -1,0 +1,53 @@
+﻿@model List<string>
+<h2>Subscribe to Events</h2>
+
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-success">
+        @ViewBag.Message
+    </div>
+}
+
+<form method="post" action="@Url.Action("Submit", "Event")">
+    <div class="container mt-4">
+        <h2>Select Platform Events</h2>
+        <div class="form-group">
+            <label for="platformEvents">Platform Events:</label>
+            <select id="platformEvents" name="selectedEvents" class="form-control" multiple>
+                @foreach (var event1 in Model)
+                {
+                    <option value="@event1">@event1</option>
+                }
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        </>
+    </div>
+</form>
+
+<hr />
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+
+    $('#platformEventsForm').on('submit', function (e) {
+        e.preventDefault();
+
+        var selectedValues = $('#platformEvents').val();
+
+        $.ajax({
+            url: '@Url.Action("Submit", "PlatformEvents")',
+            type: 'POST',
+            data: JSON.stringify({ selectedEvents: selectedValues }),
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            success: function () {
+                $('#resultMessage').html('<div class="alert alert-success">Data submitted successfully!</div>');
+            },
+            error: function () {
+                $('#resultMessage').html('<div class="alert alert-danger">An error occurred while submitting data.</div>');
+            }
+        });
+    });
+</script>

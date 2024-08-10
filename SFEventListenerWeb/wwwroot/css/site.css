@@ -1,0 +1,241 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+.navbar {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+    .navbar .org-name {
+        font-weight: bold;
+    }
+
+.landing-page {
+    margin-top: 50px;
+}
+
+    .landing-page h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+    }
+
+    .landing-page p {
+        font-size: 1.2em;
+        color: #555;
+        margin-bottom: 40px;
+    }
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.button {
+    padding: 15px 30px;
+    font-size: 1.1em;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+    .button:hover {
+        background-color: #0056b3;
+    }
+
+.navbar {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+    .navbar .org-name {
+        font-weight: bold;
+    }
+
+.landing-page {
+    margin-top: 50px;
+}
+
+    .landing-page h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+    }
+
+    .landing-page p {
+        font-size: 1.2em;
+        color: #555;
+        margin-bottom: 40px;
+    }
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.button {
+    padding: 15px 30px;
+    font-size: 1.1em;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+    .button:hover {
+        background-color: #0056b3;
+    }
+
+.table-container {
+    width: 50%;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+}
+
+.table-container {
+    width: 50%;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+    position: relative; /* Ensures the tooltip is positioned relative to the table cell */
+}
+
+.tooltip-icon {
+    cursor: pointer;
+    color: blue;
+    margin-left: 5px;
+    position: relative;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    background-color: black;
+    color: #fff;
+    text-align: left;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s;
+    white-space: normal; /* Allows text to wrap */
+    max-width: 300px; /* Limits the maximum width of the tooltip */
+    word-wrap: break-word; /* Breaks long words to fit within the max-width */
+    overflow-wrap: break-word; /* Ensures words break to fit within the container */
+    transform: translateX(-50%);
+    top: -9999px; /* Start off-screen to prevent flickering */
+    left: 50%;
+}
+
+/* Show the tooltip */
+.tooltip-icon:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Optional: Add an arrow pointing down */
+.tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%; /* Position at the bottom of the tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
+
+.navbar {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+    .navbar .org-name {
+        font-weight: bold;
+    }
+
+.landing-page {
+    margin-top: 50px;
+}
+
+    .landing-page h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+    }
+
+    .landing-page p {
+        font-size: 1.2em;
+        color: #555;
+        margin-bottom: 40px;
+    }
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.button {
+    padding: 15px 30px;
+    font-size: 1.1em;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+    .button:hover {
+        background-color: #0056b3;
+    }

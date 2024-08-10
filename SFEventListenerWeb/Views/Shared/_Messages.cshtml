@@ -1,0 +1,32 @@
+﻿@model IEnumerable<EventMessage>
+<h2>Event Messages</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Event Name</th>
+            <th>Message</th>
+            <th>Timestamp</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var message in Model)
+        {
+            <tr>
+                <td>@message.EventName</td>
+                <td>
+                    <span class="tooltip-icon" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+                        <i class="fa fa-info"></i>
+                        <span class="tooltip-text">
+                            @message.Message
+                        </span>
+                    </span>
+                    <i class="fa fa-clipboard copy-icon" onclick="copyToClipboard('@message.Message')"></i>
+                </td>
+               
+                <td>@message.Timestamp</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

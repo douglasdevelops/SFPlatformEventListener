@@ -1,0 +1,68 @@
+﻿@model SFEventListenerWeb.MonitorViewModel
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+
+
+<div>Monitoring the following events</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Event Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@String.Join(",", Model.events);</td>
+        </tr>
+    </tbody>
+</table>
+<div id="eventMessagesContainer">
+</div>
+
+<script>
+    function showTooltip(icon) {
+        const tooltip = icon.querySelector('.tooltip-text');
+        const tooltipRect = tooltip.getBoundingClientRect();
+        const iconRect = icon.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+
+        if (iconRect.top - tooltipRect.height > 0) {
+            tooltip.style.top = -(tooltipRect.height + 10) + 'px';
+            tooltip.style.bottom = 'auto';
+            tooltip.querySelector('::after').style.top = '100%';
+            tooltip.querySelector('::after').style.bottom = 'auto';
+        } else {
+            tooltip.style.top = 'auto';
+            tooltip.style.bottom = -(tooltipRect.height + 10) + 'px';
+            tooltip.querySelector('::after').style.top = 'auto';
+            tooltip.querySelector('::after').style.bottom = '100%';
+        }
+    }
+
+    function hideTooltip(icon) {
+        const tooltip = icon.querySelector('.tooltip-text');
+        tooltip.style.top = '-9999px';
+        tooltip.style.bottom = 'auto';
+    }
+    function refreshMessages() {
+        $.ajax({
+            url: '@Url.Action("Messages", "Event")',
+            type: 'GET',
+            success: function (result) {
+                $('#eventMessagesContainer').html(result);
+            }
+        });
+    }
+
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(function() {
+            alert('Message copied to clipboard');
+        }, function(err) {
+            console.error('Could not copy text: ', err);
+        });
+    }
+
+    setInterval(refreshMessages, 5000);
+</script>
